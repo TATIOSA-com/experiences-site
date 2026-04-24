@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Experiences.am | Tours, Activities and Local Experiences in Armenia</title>
+  <meta name="description" content="Find the best tours, activities and local experiences in Armenia. Explore hikes, cultural discoveries, wine tours, outdoor adventures and unique things to do across Armenia on Experiences.am." />
+  <meta name="keywords" content="best tours in Armenia, activities in Armenia, local experiences in Armenia, things to do in Armenia, Armenia experiences, Armenia tours, hiking Armenia, wine tours Armenia, adventure tours Armenia">
+  <meta name="google" content="translate">
+  <meta http-equiv="Content-Language" content="en,hy,ru,ar,fa">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand-orange: #ff6b00;
+      --brand-green: #107c41;
+      --brand-black: #080c0a;
+      --text: rgba(255,255,255,0.96);
+      --muted: rgba(255,255,255,0.72);
+      --soft: rgba(255,255,255,0.5);
+      --border: rgba(255,255,255,0.08);
+      --glass: rgba(255,255,255,0.03);
+      --hero-image: url('https://ota.am/wp-content/uploads/2025/03/vayots-dzor.webp');
+      --feature-image: url('https://ota.am/wp-content/uploads/2025/01/zipline.jpg');
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--brand-black);
+      color: var(--text);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .atmosphere {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(circle at 70% 30%, rgba(255, 107, 0, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 10% 80%, rgba(16, 124, 65, 0.15) 0%, transparent 60%);
+    }
+
+    .page { position: relative; z-index: 1; }
+    .container {
+      width: min(1280px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .glass {
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+      padding: 22px 0;
+      background: transparent;
+      transition: background 0.35s ease, backdrop-filter 0.35s ease, -webkit-backdrop-filter 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    }
+    .nav.scrolled {
+      background: rgba(10, 14, 12, 0.82);
+      backdrop-filter: blur(18px) saturate(160%);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+    .logo {
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      text-transform: uppercase;
+    }
+    .logo span { color: var(--brand-orange); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.82);
+    }
+
+    .nav:not(.scrolled) .nav-links a,
+    .nav:not(.scrolled) .logo,
+    .nav:not(.scrolled) .lang-button,
+    .nav:not(.scrolled) .nav-button {
+      color: rgba(255,255,255,0.95);
+    }
+
+    .nav.scrolled .nav-links a,
+    .nav.scrolled .logo,
+    .nav.scrolled .lang-button,
+    .nav.scrolled .nav-button {
+      color: #ffffff;
+    }
+
+    .nav.scrolled .lang-button,
+    .nav.scrolled .nav-button {
+      border-color: rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .lang-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+    }
+    .lang-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.95);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .lang-menu {
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+      min-width: 180px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(10,12,11,0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.28);
+      padding: 8px;
+      display: none;
+      z-index: 150;
+    }
+    .lang-wrap.open .lang-menu {
+      display: block;
+    }
+    .lang-option {
+      width: 100%;
+      text-align: left;
+      border: 0;
+      background: transparent;
+      color: rgba(255,255,255,0.92);
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .lang-option:hover,
+    .lang-option.active {
+      background: rgba(255,255,255,0.06);
+    }
+
+    .nav-button {
+      padding: 12px 18px;
+      border-radius: 12px;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      background-image: var(--hero-image);
+      background-size: cover;
+      background-position: center center;
+      transform: scale(1);
+      transition: transform .25s linear;
+      filter: brightness(.32);
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(8,12,10,.45), rgba(8,12,10,.16), rgba(8,12,10,.88));
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 130px 0 70px;
+      max-width: 820px;
+    }
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: var(--brand-orange);
+      font-size: 10px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .32em;
+    }
+    h1 {
+      margin: 0 0 26px;
+      font-size: clamp(52px, 10vw, 96px);
+      line-height: .9;
+      letter-spacing: -0.08em;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .stroke {
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,0.32);
+    }
+    .hero p {
+      margin: 0 0 34px;
+      max-width: 560px;
+      font-size: clamp(18px, 2.1vw, 22px);
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 26px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 26px;
+      border-radius: 14px;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: var(--brand-orange);
+      color: #050505;
+      box-shadow: 0 10px 30px rgba(255,107,0,.22);
+    }
+    .btn-secondary { color: white; }
+    .hero-trust {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 18px;
+      opacity: .75;
+    }
+    .stars {
+      color: var(--brand-orange);
+      letter-spacing: .18em;
+      font-size: 13px;
+    }
+    .trust-text {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: rgba(255,255,255,.85);
+    }
+
+    .section {
+      position: relative;
+      z-index: 1;
+      padding: 88px 0;
+    }
+    .section-title {
+      margin: 0 0 10px;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: .95;
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      text-transform: uppercase;
+    }
+    .section-lead {
+      max-width: 700px;
+      color: var(--soft);
+      font-size: 17px;
+      margin: 0 0 28px;
+    }
+
+    .embed-card {
+      border-radius: 24px;
+      overflow: hidden;
+      padding: 0;
+      box-shadow: 0 30px 80px rgba(0,0,0,.25);
+    }
+    .embed-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+    }
+    .embed-head h3 {
+      margin: 0;
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+    }
+    .embed-head p {
+      margin: 4px 0 0;
+      color: var(--soft);
+      font-size: 13px;
+    }
+    .embed-wrap {
+      position: relative;
+      width: 100%;
+      height: 1200px;
+      min-height: 1200px;
+      max-height: 1200px;
+      background: rgba(255,255,255,0.02);
+      overflow: hidden;
+      border-radius: 0 0 24px 24px;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      background: transparent;
+    }
+
+
+
+
+    .mobile-filter-bar {
+      display: none;
+      margin: 14px 0 10px;
+    }
+    .mobile-filter-open {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.96);
+      border-radius: 14px;
+      min-height: 48px;
+      padding: 0 16px;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .filter-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 120;
+      padding: 16px;
+      align-items: center;
+      justify-content: center;
+    }
+    .filter-modal.open {
+      display: flex;
+    }
+    .filter-modal-panel {
+      width: min(560px, 100%);
+      max-height: calc(100vh - 32px);
+      overflow: auto;
+      border-radius: 20px;
+      padding: 18px;
+      background: #101512;
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+    }
+    .filter-modal-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .filter-modal-title {
+      font-size: 15px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .filter-close {
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+      border-radius: 12px;
+      min-width: 42px;
+      height: 42px;
+      cursor: pointer;
+      font-size: 20px;
+      line-height: 1;
+    }
+    .mobile-only { display: none; }
+
+
+    .filters-panel {
+      margin: 18px 0 16px;
+      display: grid;
+      gap: 14px;
+    }
+    .filters-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+    .filter-select,
+    .filter-toggle {
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.96);
+      border-radius: 14px;
+      min-height: 46px;
+      padding: 0 14px;
+      font-size: 14px;
+      font-weight: 600;
+      outline: none;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .filter-select {
+      min-width: 180px;
+      cursor: pointer;
+    }
+    .filter-select option {
+      color: #111;
+      background: #fff;
+    }
+    .filter-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      user-select: none;
+      white-space: nowrap;
+    }
+    .filter-toggle input {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--brand-orange);
+      margin: 0;
+      cursor: pointer;
+    }
+    .filter-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    .filter-btn {
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.95);
+      border-radius: 999px;
+      padding: 11px 16px;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+    .filter-btn:hover {
+      transform: translateY(-1px);
+      border-color: rgba(255,107,0,0.4);
+    }
+    .filter-summary {
+      font-size: 13px;
+      color: rgba(255,255,255,0.72);
+      margin-top: 2px;
+    }
+
+    .category-wrap {
+      margin: 16px 0 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .category-chip {
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.92);
+      border-radius: 999px;
+      padding: 11px 15px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 700;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+    .category-chip:hover { transform: translateY(-1px); }
+    .category-chip.active {
+      background: rgba(255,107,0,0.18);
+      border-color: rgba(255,107,0,0.55);
+      color: #fff;
+    }
+
+    .about {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding-top: 110px;
+      padding-bottom: 110px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .feature-list {
+      display: grid;
+      gap: 24px;
+      margin-top: 28px;
+    }
+    .feature-item {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brand-orange);
+      flex: 0 0 48px;
+      font-size: 21px;
+    }
+    .feature-item h3 {
+      margin: 0 0 6px;
+      font-size: 15px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .feature-item p {
+      margin: 0;
+      color: var(--soft);
+      font-size: 15px;
+    }
+    .about-card {
+      position: relative;
+      border-radius: 26px;
+      padding: 10px;
+      overflow: hidden;
+    }
+    .about-card::before {
+      content: "";
+      position: absolute;
+      inset: 20% 18% auto auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: rgba(255,107,0,.22);
+      filter: blur(90px);
+      pointer-events: none;
+    }
+    .about-card img {
+      width: 100%;
+      height: 620px;
+      object-fit: cover;
+      border-radius: 20px;
+      opacity: .84;
+    }
+
+    .categories {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding-top: 90px;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 28px;
+    }
+    .cat-card {
+      padding: 22px;
+      border-radius: 20px;
+      min-height: 170px;
+    }
+    .cat-card .emoji {
+      font-size: 28px;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+    .cat-card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+    }
+    .cat-card p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--soft);
+    }
+
+    .cta {
+      padding: 95px 0 110px;
+    }
+    .cta-panel {
+      padding: 34px;
+      border-radius: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+    .cta-panel h2 {
+      margin: 0 0 8px;
+      font-size: clamp(28px, 4vw, 48px);
+      line-height: .95;
+      text-transform: uppercase;
+      letter-spacing: -0.05em;
+    }
+    .cta-panel p {
+      margin: 0;
+      color: var(--soft);
+      max-width: 650px;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,.05);
+      background: rgba(0,0,0,.18);
+      padding: 34px 0 46px;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .footer-note {
+      color: rgba(255,255,255,.35);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .footer-links {
+      display: flex;
+      gap: 18px 28px;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      font-size: 11px;
+      color: rgba(255,255,255,.55);
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-weight: 800;
+    }
+
+    @media (max-width: 980px) {
+      .grid, .cards, .cta-panel {
+        grid-template-columns: 1fr;
+        display: grid;
+      }
+      .about-card img { height: 440px; }
+      .cards { grid-template-columns: repeat(2, 1fr); }
+      .cta-panel { padding: 28px; }
+    }
+
+    @media (max-width: 760px) {
+      .container { width: min(1280px, calc(100% - 20px)); }
+      .nav { padding: 14px 0; }
+      .nav-links { display: none; }
+      .logo { font-size: 24px; }
+      .hero-content { padding-top: 110px; padding-bottom: 40px; }
+      .hero-actions { flex-direction: column; }
+      .btn { width: 100%; }
+      .section { padding: 64px 0; }
+      .embed-wrap, iframe { min-height: 860px; height: 860px; }
+      .cards { grid-template-columns: 1fr; }
+      .embed-head { align-items: flex-start; flex-direction: column; }
+      .cta-panel { display: block; }
+      .cta-panel .btn { margin-top: 18px; }
+    }
+  
+    @media (max-width: 768px) {
+      .filters-panel .filters-row {
+        display: none;
+      }
+      .mobile-filter-bar {
+        display: block;
+      }
+      .category-wrap {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .category-chip {
+        width: 100%;
+        text-align: left;
+        border-radius: 14px;
+      }
+      .mobile-only { display: block; }
+      .desktop-only { display: none !important; }
+      .filter-modal .filters-row {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .filter-modal .filter-select,
+      .filter-modal .filter-toggle,
+      .filter-modal .filter-btn {
+        width: 100%;
+      }
+      .filter-modal .filter-actions {
+        width: 100%;
+      }
+      .embed-wrap {
+        height: 980px;
+        min-height: 980px;
+        max-height: 980px;
+      }
+    }
+
+
+    @media (max-width: 768px) {
+      #categoryChips {
+        display: none !important;
+      }
+      .filter-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+      }
+      .filter-modal-panel {
+        position: relative;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="atmosphere"></div>
+
+  <div class="page">
+    <nav class="nav" id="mainNav">
+      <div class="container nav-inner">
+        <div class="logo" data-i18n="brand">Experiences<span>.am</span></div>
+        <div class="nav-links">
+          <a href="#experiences" data-scroll="experiences" data-i18n="navAdventures">Adventures</a>
+          <a href="#about" data-scroll="about" data-i18n="navWhy">Why Book With Us</a>
+          <div class="lang-wrap" id="langWrap">
+            <button type="button" class="lang-button" id="langButton">Language ▾</button>
+            <div class="lang-menu" id="langMenu">
+              <button type="button" class="lang-option active" data-lang="en">English</button>
+              <button type="button" class="lang-option" data-lang="ru">Русский</button>
+              <button type="button" class="lang-option" data-lang="ar">العربية</button>
+              <button type="button" class="lang-option" data-lang="fa">فارسی</button>
+              <button type="button" class="lang-option" data-lang="hy">Հայերեն</button>
+            </div>
+          </div>
+          <a href="https://my.ota.am" target="_blank" rel="noopener" class="nav-button glass" data-i18n="navCta">Add Your Services</a>
+        </div>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-media" id="heroMedia"></div>
+      <div class="container">
+        <div class="hero-content">
+          <span class="eyebrow" data-i18n="heroEyebrow">Uncharted Territory</span>
+          <h1><span data-i18n="heroTitleLine1">Experience Armenia</span><br><span class="stroke" data-i18n="heroTitleLine2">Beyond the Map.</span></h1>
+          <p data-i18n="heroText2">From wild mountain hikes to hidden wine cellars, book authentic experiences directly from local experts.</p>
+          <div class="hero-actions">
+            <a href="#experiences" data-scroll="experiences" class="btn btn-primary" data-i18n="heroBtn">Explore Experiences</a>
+            <a href="https://my.ota.am" target="_blank" rel="noopener" class="btn btn-secondary glass" data-i18n="heroBtnServices">Add Your Services</a>
+          </div>
+          <div class="hero-trust">
+            <div class="stars">★★★★★</div>
+            <div class="trust-text" data-i18n="heroTrust">Verified local guides, events and experiences across Armenia</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experiences">
+      <div class="container">
+        <h2 class="section-title" data-i18n="sectionTitle">Available Experiences</h2>
+        <p class="section-lead" data-i18n="sectionLead">Explore live adventures, activities and experiences published through Experiences.am.</p>
+
+        <div class="embed-card glass">
+          <div class="embed-head">
+            <div>
+              <h3 data-i18n="feedTitle">Live Experiences Feed</h3>
+            </div>
+            <a href="https://my.ota.am" target="_blank" rel="noopener" class="btn btn-secondary glass" style="padding:12px 16px; width:auto;" data-i18n="listExperiencesBtn">List Your Experiences</a>
+          </div>
+
+          <div class="mobile-filter-bar">
+            <button type="button" class="mobile-filter-open" id="openMobileFilters" data-i18n="mobileFilterOpen">Search & Filter Experiences</button>
+          </div>
+
+
+          <div class="filters-panel">
+            <div class="filters-row desktop-only">
+              <select id="regionFilter" class="filter-select" aria-label="Region">
+                <option value="" data-i18n="allRegions">All Regions</option>
+                <option value="Լոռի">Lori</option>
+                <option value="Շիրակ">Shirak</option>
+                <option value="Արմավիր">Armavir</option>
+                <option value="Արագածոտն">Aragatsotn</option>
+                <option value="Կոտայք">Kotayk</option>
+                <option value="Գեղարքունիք">Gegharkunik</option>
+                <option value="Վայոց Ձոր">Vayots Dzor</option>
+                <option value="Սյունիք">Syunik</option>
+                <option value="Տավուշ">Tavush</option>
+                <option value="Արարատ">Ararat</option>
+                <option value="Երևան">Yerevan</option>
+              </select>
+
+              <select id="languageFilter" class="filter-select" aria-label="Speaking Language">
+                <option value="" data-i18n="allLanguages">All Languages</option>
+                <option value="Հայերեն">Armenian</option>
+                <option value="Անգլերեն">English</option>
+                <option value="Ռուսերեն">Russian</option>
+                <option value="Արաբերեն">Arabic</option>
+                <option value="Չինարեն">Chinese</option>
+                <option value="Իսպաներեն">Spanish</option>
+                <option value="Ֆրանսերեն">French</option>
+                <option value="Իտալերեն">Italian</option>
+                <option value="Գերմաներեն">German</option>
+                <option value="Հինդի">Hindi</option>
+                <option value="Պորտուգալերեն">Portuguese</option>
+                <option value="Ուրդու">Urdu</option>
+                <option value="Ճապոներեն">Japanese</option>
+                <option value="Վրացերեն">Georgian</option>
+                <option value="Ուկրաներեն">Ukrainian</option>
+              </select>
+
+              <label class="filter-toggle">
+                <input type="checkbox" id="sameDayFilter">
+                <span data-i18n="lastMinute">Accepts Last Minute Reservations</span>
+              </label>
+
+              <div class="filter-actions">
+                <button type="button" class="filter-btn" id="clearFiltersBtn" data-i18n="clearFilters" data-i18n="clearFilters">Clear Filters</button>
+              </div>
+            </div>
+
+            <div class="category-wrap" id="categoryChips">
+              <button type="button" class="category-chip active" data-category="" data-i18n="allExperiences">All Experiences</button>
+              <button type="button" class="category-chip" data-category="Մաստեր Կլաս | Փորձառություններ" data-i18n="masterClasses">Master Classes</button>
+              <button type="button" class="category-chip" data-category="Պարապլանիզմ" data-i18n="paragliding">Paragliding</button>
+              <button type="button" class="category-chip" data-category="Պատմաբան" data-i18n="historianGuide">Historian Guide</button>
+              <button type="button" class="category-chip" data-category="Ձիավարությամբ Արշավ" data-i18n="horsebackHiking">Horseback Hiking</button>
+              <button type="button" class="category-chip" data-category="Դահուկային Լեռնագնաց" data-i18n="skiMountaineering">Ski Mountaineering</button>
+              <button type="button" class="category-chip" data-category="Լեռնագնաց" data-i18n="mountaineerGuide">Mountaineer Guide</button>
+              <button type="button" class="category-chip" data-category="Արշավական" data-i18n="hikingGuide">Hiking Guide</button>
+              <button type="button" class="category-chip" data-category="7 տեղանոց" data-i18n="seater7">7-Seater Vehicle</button>
+              <button type="button" class="category-chip" data-category="Ամենագնաց" data-i18n="offroadVehicle">Off-road Vehicle</button>
+              <button type="button" class="category-chip" data-category="17 Տեղանոց" data-i18n="seater17">17-Seater Minibus</button>
+              <button type="button" class="category-chip" data-category="Լուսանկարահանում և Տեսաձայնագրում" data-i18n="photoVideo">Photo &amp; Video</button>
+              <button type="button" class="category-chip" data-category="Գիդ" data-i18n="tourGuide">Tour Guide</button>
+            </div>
+
+            <div class="filter-summary" id="filterSummary" data-i18n="summaryAll">Showing all available experiences across Armenia.</div>
+          </div>
+
+          <div class="embed-wrap">
+            <iframe id="experiencesFrame" title="Available Experiences" loading="lazy" allowtransparency="true"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about" id="about">
+      <div class="container grid">
+        <div>
+          <span class="eyebrow" data-i18n="ourStandard">Our Standard</span>
+          <h2 class="section-title" data-i18n="whyTitle">Why Book With Us</h2>
+          <p class="section-lead" style="max-width:760px; margin-top:18px;" data-i18n="whyLead">Find the best tours, activities and local experiences in Armenia, from mountain adventures and cultural discoveries to wine journeys, workshops and local-led experiences.</p>
+          <div class="feature-list">
+            <div class="feature-item">
+              <div class="icon glass">👥</div>
+              <div>
+                <h3 data-i18n="f1t">Direct from locals</h3>
+                <p data-i18n="f1d">Book directly with the people who know the land, the stories and the route best.</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="icon glass">🛡️</div>
+              <div>
+                <h3 data-i18n="f2t">No extra booking commissions</h3>
+                <p data-i18n="f2d">You connect directly to the provider through a modern Armenian tourism ecosystem.</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="icon glass">📍</div>
+              <div>
+                <h3 data-i18n="f3t">Unique experiences</h3>
+                <p data-i18n="f3d">From hidden hikes and workshops to wine, culture and regional events, discover more than standard tours.</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="icon glass">⏱️</div>
+              <div>
+                <h3 data-i18n="f4t">Real-time availability</h3>
+                <p data-i18n="f4d">Published experiences are shown live, helping travelers browse active opportunities across Armenia.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-card glass">
+          <img src="https://ota.am/wp-content/uploads/2025/01/zipline.jpg" alt="Adventure in Armenia" referrerpolicy="no-referrer">
+        </div>
+      </div>
+    </section>
+
+    
+
+    <section class="cta">
+      <div class="container">
+        <div class="cta-panel glass">
+          <div>
+            <h2 data-i18n="ctaTitle">List your experiences and activities on Experiences.am for free.</h2>
+            <p data-i18n="ctaText">Built for guides, activity providers, event organizers, drivers, tourism businesses and local experts who want visibility and bookings.</p>
+          </div>
+          <div>
+            <a href="https://my.ota.am" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="ctaBtn">Add Your Experiences</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="filter-modal" id="filterModal">
+            <div class="filter-modal-panel">
+              <div class="filter-modal-head">
+                <div class="filter-modal-title" data-i18n="searchFilters">Search & Filters</div>
+                <button type="button" class="filter-close" id="closeMobileFilters">×</button>
+              </div>
+
+              <div class="filters-row mobile-only" id="mobileFiltersRow">
+                <select id="regionFilterMobile" class="filter-select" aria-label="Region">
+                  <option value="" data-i18n="allRegions">All Regions</option>
+                  <option value="Լոռի">Lori</option>
+                  <option value="Շիրակ">Shirak</option>
+                  <option value="Արմավիր">Armavir</option>
+                  <option value="Արագածոտն">Aragatsotn</option>
+                  <option value="Կոտայք">Kotayk</option>
+                  <option value="Գեղարքունիք">Gegharkunik</option>
+                  <option value="Վայոց Ձոր">Vayots Dzor</option>
+                  <option value="Սյունիք">Syunik</option>
+                  <option value="Տավուշ">Tavush</option>
+                  <option value="Արարատ">Ararat</option>
+                  <option value="Երևան">Yerevan</option>
+                </select>
+
+                <select id="languageFilterMobile" class="filter-select" aria-label="Speaking Language">
+                  <option value="" data-i18n="allLanguages">All Languages</option>
+                  <option value="Հայերեն">Armenian</option>
+                  <option value="Անգլերեն">English</option>
+                  <option value="Ռուսերեն">Russian</option>
+                  <option value="Արաբերեն">Arabic</option>
+                  <option value="Չինարեն">Chinese</option>
+                  <option value="Իսպաներեն">Spanish</option>
+                  <option value="Ֆրանսերեն">French</option>
+                  <option value="Իտալերեն">Italian</option>
+                  <option value="Գերմաներեն">German</option>
+                  <option value="Հինդի">Hindi</option>
+                  <option value="Պորտուգալերեն">Portuguese</option>
+                  <option value="Ուրդու">Urdu</option>
+                  <option value="Ճապոներեն">Japanese</option>
+                  <option value="Վրացերեն">Georgian</option>
+                  <option value="Ուկրաներեն">Ukrainian</option>
+                </select>
+
+                <select id="categoryFilterMobile" class="filter-select" aria-label="Category">
+                  <option value="" data-i18n="allExperiences" data-i18n="allExperiences">All Experiences</option>
+                  <option value="Մաստեր Կլաս | Փորձառություններ" data-i18n="masterClasses">Master Classes</option>
+                  <option value="Պարապլանիզմ" data-i18n="paragliding">Paragliding</option>
+                  <option value="Պատմաբան" data-i18n="historianGuide">Historian Guide</option>
+                  <option value="Ձիավարությամբ Արշավ" data-i18n="horsebackHiking">Horseback Hiking</option>
+                  <option value="Դահուկային Լեռնագնաց" data-i18n="skiMountaineering">Ski Mountaineering</option>
+                  <option value="Լեռնագնաց" data-i18n="mountaineerGuide">Mountaineer Guide</option>
+                  <option value="Արշավական" data-i18n="hikingGuide">Hiking Guide</option>
+                  <option value="7 տեղանոց" data-i18n="seater7">7-Seater Vehicle</option>
+                  <option value="Ամենագնաց" data-i18n="offroadVehicle">Off-road Vehicle</option>
+                  <option value="17 Տեղանոց" data-i18n="seater17">17-Seater Minibus</option>
+                  <option value="Լուսանկարահանում և Տեսաձայնագրում" data-i18n="photoVideo">Photo &amp; Video</option>
+                  <option value="Գիդ" data-i18n="tourGuide">Tour Guide</option>
+                </select>
+
+                <label class="filter-toggle">
+                  <input type="checkbox" id="sameDayFilterMobile">
+                  <span data-i18n="lastMinute">Accepts Last Minute Reservations</span>
+                </label>
+
+                <div class="filter-actions">
+                  <button type="button" class="filter-btn" id="applyMobileFilters" data-i18n="applyFilters">Apply Filters</button>
+                  <button type="button" class="filter-btn" id="clearMobileFilters">Clear Filters</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+    <footer>
+      <div class="container footer-inner">
+        <div>
+          <div class="logo" style="font-size:28px; margin-bottom:6px;">Experiences<span>.am</span></div>
+          <div class="footer-note" data-i18n="footerNote">Find the best tours, activities and local experiences in Armenia</div>
+        </div>
+        <div class="footer-links">
+          <a href="#experiences">Experiences</a>
+          <a href="#about" data-scroll="about" data-i18n="navWhy">Why Book With Us</a>
+          
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // =====================================================
+    // QUICK EDIT SECTION
+    // 1) Change EXPERIENCES_KEY for a different feed
+    // 2) Scroll lower in this file to the TRANSLATIONS START block
+    //    to edit all website texts by language
+    // =====================================================
+    var EXPERIENCES_KEY = 'OTA-1001';
+
+    // Uses the worker render route so filters apply correctly
+    var EXPERIENCES_BASE_URL = 'https://server.tatiosa.pro/render?k=';
+
+    var nav = document.getElementById('mainNav');
+    var heroMedia = document.getElementById('heroMedia');
+    var experiencesFrame = document.getElementById('experiencesFrame');
+    var categoryChips = document.getElementById('categoryChips');
+    var regionFilter = document.getElementById('regionFilter');
+    var languageFilter = document.getElementById('languageFilter');
+    var sameDayFilter = document.getElementById('sameDayFilter');
+    var clearFiltersBtn = document.getElementById('clearFiltersBtn');
+    var filterSummary = document.getElementById('filterSummary');
+
+    var filterModal = document.getElementById('filterModal');
+    var openMobileFilters = document.getElementById('openMobileFilters');
+    var closeMobileFilters = document.getElementById('closeMobileFilters');
+    var applyMobileFiltersBtn = document.getElementById('applyMobileFilters');
+    var clearMobileFiltersBtn = document.getElementById('clearMobileFilters');
+    var regionFilterMobile = document.getElementById('regionFilterMobile');
+    var languageFilterMobile = document.getElementById('languageFilterMobile');
+    var categoryFilterMobile = document.getElementById('categoryFilterMobile');
+    var sameDayFilterMobile = document.getElementById('sameDayFilterMobile');
+
+    var currentCategory = '';
+
+
+    function syncMobileFromDesktop() {
+      if (regionFilterMobile) regionFilterMobile.value = regionFilter ? regionFilter.value : '';
+      if (languageFilterMobile) languageFilterMobile.value = languageFilter ? languageFilter.value : '';
+      if (categoryFilterMobile) categoryFilterMobile.value = currentCategory || '';
+      if (sameDayFilterMobile) sameDayFilterMobile.checked = sameDayFilter ? sameDayFilter.checked : false;
+    }
+
+    function syncDesktopFromMobile() {
+      if (regionFilter && regionFilterMobile) regionFilter.value = regionFilterMobile.value;
+      if (languageFilter && languageFilterMobile) languageFilter.value = languageFilterMobile.value;
+      if (categoryFilterMobile) currentCategory = categoryFilterMobile.value || '';
+      if (sameDayFilter && sameDayFilterMobile) sameDayFilter.checked = sameDayFilterMobile.checked;
+
+      document.querySelectorAll('.category-chip').forEach(function(chip) {
+        chip.classList.toggle('active', (chip.getAttribute('data-category') || '') === currentCategory);
+      });
+    }
+
+    function openFilterModalPanel() {
+      syncMobileFromDesktop();
+      if (filterModal) filterModal.classList.add('open');
+    }
+
+    function closeFilterModalPanel() {
+      if (filterModal) filterModal.classList.remove('open');
+    }
+
+    function buildFrameSrc() {
+      var url = EXPERIENCES_BASE_URL + encodeURIComponent(EXPERIENCES_KEY) + '&type=services';
+
+      if (currentCategory) {
+        url += '&category=' + encodeURIComponent(currentCategory);
+      }
+      if (regionFilter && regionFilter.value) {
+        url += '&region=' + encodeURIComponent(regionFilter.value);
+      }
+      if (languageFilter && languageFilter.value) {
+        url += '&language=' + encodeURIComponent(languageFilter.value);
+      }
+      if (sameDayFilter && sameDayFilter.checked) {
+        url += '&sameDay=true';
+      }
+      return url;
+    }
+
+    function getActiveCategoryLabel() {
+      var active = document.querySelector('.category-chip.active');
+      return active ? active.textContent.trim() : 'All Experiences';
+    }
+
+    function updateSummary() {
+      var parts = [];
+      var categoryLabel = getActiveCategoryLabel();
+      if (currentCategory) parts.push(categoryLabel);
+      if (regionFilter && regionFilter.value) {
+        var regionText = regionFilter.options[regionFilter.selectedIndex].text;
+        parts.push(regionText);
+      }
+      if (languageFilter && languageFilter.value) {
+        var languageText = languageFilter.options[languageFilter.selectedIndex].text;
+        parts.push(languageText + ' speaking');
+      }
+      if (sameDayFilter && sameDayFilter.checked) {
+        parts.push('last minute available');
+      }
+
+      if (!parts.length) {
+        filterSummary.textContent = getTranslationValue('summaryAll');
+      } else {
+        filterSummary.textContent = getTranslationValue('summaryFiltered') + parts.join(' • ');
+      }
+    }
+
+    function applyFilters() {
+      experiencesFrame.src = buildFrameSrc();
+      updateSummary();
+    }
+
+    function setActiveCategory(category) {
+      currentCategory = category || '';
+      document.querySelectorAll('.category-chip').forEach(function(chip) {
+        chip.classList.toggle('active', (chip.getAttribute('data-category') || '') === currentCategory);
+      });
+      applyFilters();
+    }
+
+    function clearFilters() {
+      currentCategory = '';
+      if (regionFilter) regionFilter.value = '';
+      if (languageFilter) languageFilter.value = '';
+      if (sameDayFilter) sameDayFilter.checked = false;
+      syncMobileFromDesktop();
+
+      document.querySelectorAll('.category-chip').forEach(function(chip) {
+        chip.classList.toggle('active', (chip.getAttribute('data-category') || '') === '');
+      });
+
+      applyFilters();
+    }
+
+    function scrollToSection(id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      var navHeight = nav ? nav.offsetHeight : 0;
+      var top = el.getBoundingClientRect().top + window.pageYOffset - navHeight - 12;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    }
+
+    document.querySelectorAll('[data-scroll]').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var target = this.getAttribute('data-scroll');
+        scrollToSection(target);
+      });
+    });
+
+    if (categoryChips) {
+      categoryChips.addEventListener('click', function(e) {
+        var chip = e.target.closest('.category-chip');
+        if (!chip) return;
+        var category = chip.getAttribute('data-category') || '';
+        setActiveCategory(category);
+      });
+    }
+
+    if (regionFilter) {
+      regionFilter.addEventListener('change', applyFilters);
+    }
+    if (languageFilter) {
+      languageFilter.addEventListener('change', applyFilters);
+    }
+    if (sameDayFilter) {
+      sameDayFilter.addEventListener('change', applyFilters);
+    }
+    if (clearFiltersBtn) {
+      clearFiltersBtn.addEventListener('click', clearFilters);
+    }
+
+
+    if (openMobileFilters) {
+      openMobileFilters.addEventListener('click', openFilterModalPanel);
+    }
+    if (closeMobileFilters) {
+      closeMobileFilters.addEventListener('click', closeFilterModalPanel);
+    }
+    if (applyMobileFiltersBtn) {
+      applyMobileFiltersBtn.addEventListener('click', function() {
+        syncDesktopFromMobile();
+        applyFilters();
+        closeFilterModalPanel();
+      });
+    }
+    if (clearMobileFiltersBtn) {
+      clearMobileFiltersBtn.addEventListener('click', function() {
+        currentCategory = '';
+        if (regionFilterMobile) regionFilterMobile.value = '';
+        if (languageFilterMobile) languageFilterMobile.value = '';
+        if (categoryFilterMobile) categoryFilterMobile.value = '';
+        if (sameDayFilterMobile) sameDayFilterMobile.checked = false;
+        syncDesktopFromMobile();
+        document.querySelectorAll('.category-chip').forEach(function(chip) {
+          chip.classList.toggle('active', (chip.getAttribute('data-category') || '') === '');
+        });
+        applyFilters();
+      });
+    }
+    if (filterModal) {
+      filterModal.addEventListener('click', function(e) {
+        if (e.target === filterModal) closeFilterModalPanel();
+      });
+    }
+
+    function handleScroll() {
+      var y = window.scrollY || window.pageYOffset;
+      if (y > 50) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+
+      var scale = 1 + Math.min(y / 3000, 0.08);
+      heroMedia.style.transform = 'scale(' + scale + ')';
+      heroMedia.style.opacity = String(Math.max(0.72, 1 - y / 900));
+    }
+applyFilters();
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+  </script>
+
+<script>
+  /*
+    ============================================================
+    TRANSLATIONS START
+    Edit the text below for each language whenever needed.
+
+    Languages:
+    - en = English
+    - hy = Armenian
+    - ru = Russian
+    - ar = Arabic
+    - fa = Persian
+
+    Tips:
+    - Change only the text on the right side of each key.
+    - Do not change the key names unless you also change the HTML.
+    - "brand" supports HTML because it contains the orange .am part.
+    ============================================================
+  */
+  var I18N = {"en": {"langButton": "Language ▾", "navCta": "Add Your Services", "navExplore": "Experiences", "navWhy": "Why Book With Us", "heroTitle": "Experience Armenia Beyond the Map", "heroText": "Find the best tours, activities and local experiences in Armenia. Discover hikes, cultural activities, wine tours, outdoor adventures and unforgettable things to do across the country.", "heroBtn": "Explore Experiences", "heroBtn2": "List Your Experiences", "sectionTitle": "Available Experiences", "sectionLead": "Explore live adventures, activities and experiences published through Experiences.am.", "feedTitle": "Live Experiences Feed", "allRegions": "All Regions", "allLanguages": "All Languages", "allExperiences": "All Experiences", "lastMinute": "Accepts Last Minute Reservations", "clearFilters": "Clear Filters", "summaryAll": "Showing all available experiences across Armenia.", "searchFilters": "Search & Filters", "applyFilters": "Apply Filters", "mobileFilterOpen": "Search & Filter Experiences", "whyTitle": "Why Book With Us", "whyLead": "Find the best tours, activities and local experiences in Armenia, from mountain adventures and cultural discoveries to wine journeys, workshops and local-led experiences.", "f1t": "Direct from locals", "f1d": "Book directly with the people who know the land, the stories and the route best.", "f2t": "No extra booking commissions", "f2d": "You connect directly to the provider through a modern Armenian tourism ecosystem.", "f3t": "Unique experiences", "f3d": "From hidden hikes and workshops to wine, culture and regional events, discover more than standard tours.", "f4t": "Real-time availability", "f4d": "Published experiences are shown live, helping travelers browse active opportunities across Armenia.", "ctaTitle": "List your experiences and activities on Experiences.am for free.", "ctaText": "Built for guides, activity providers, event organizers, drivers, tourism businesses and local experts who want visibility and bookings.", "ctaBtn": "Add Your Experiences", "footerNote": "Find the best tours, activities and local experiences in Armenia", "masterClasses": "Master Classes", "paragliding": "Paragliding", "historianGuide": "Historian Guide", "horsebackHiking": "Horseback Hiking", "skiMountaineering": "Ski Mountaineering", "mountaineerGuide": "Mountaineer Guide", "hikingGuide": "Hiking Guide", "seater7": "7-Seater Vehicle", "offroadVehicle": "Off-road Vehicle", "seater17": "17-Seater Minibus", "photoVideo": "Photo & Video", "tourGuide": "Tour Guide", "brand": "Experiences<span>.am</span>", "navAdventures": "Adventures", "heroEyebrow": "Uncharted Territory", "heroTitleLine1": "Experience Armenia", "heroTitleLine2": "Beyond the Map.", "heroText2": "From wild mountain hikes to hidden wine cellars, book authentic experiences directly from local experts.", "heroBtnServices": "Add Your Services", "heroTrust": "Verified local guides, events and experiences across Armenia", "listExperiencesBtn": "List Your Experiences", "ourStandard": "Our Standard", "summaryFiltered": "Showing filtered experiences: "}, "ru": {"langButton": "Язык ▾", "navCta": "Добавить услуги", "navExplore": "Впечатления", "navWhy": "Почему с нами", "heroTitle": "Откройте Армению за пределами карты", "heroText": "Найдите лучшие туры, активности и локальные впечатления в Армении. Исследуйте походы, культурные занятия, винные туры, приключения на природе и незабываемые идеи для путешествий по стране.", "heroBtn": "Смотреть впечатления", "heroBtn2": "Разместить впечатления", "sectionTitle": "Доступные впечатления", "sectionLead": "Изучайте активные приключения, активности и впечатления, опубликованные на Experiences.am.", "feedTitle": "Лента впечатлений", "allRegions": "Все регионы", "allLanguages": "Все языки", "allExperiences": "Все впечатления", "lastMinute": "Принимают бронирования в последний момент", "clearFilters": "Сбросить фильтры", "summaryAll": "Показаны все доступные впечатления по Армении.", "searchFilters": "Поиск и фильтры", "applyFilters": "Применить фильтры", "mobileFilterOpen": "Поиск и фильтр впечатлений", "whyTitle": "Почему бронировать у нас", "whyLead": "Найдите лучшие туры, активности и локальные впечатления в Армении — от горных приключений и культурных открытий до винных путешествий, мастер-классов и авторских впечатлений.", "f1t": "Напрямую от местных", "f1d": "Бронируйте напрямую у людей, которые лучше всех знают местность, истории и маршруты.", "f2t": "Без лишних комиссий", "f2d": "Вы связываетесь напрямую с поставщиком через современную туристическую экосистему Армении.", "f3t": "Уникальные впечатления", "f3d": "От скрытых походов и мастер-классов до вина, культуры и региональных событий — откройте для себя больше, чем стандартные туры.", "f4t": "Актуальная доступность", "f4d": "Опубликованные впечатления показываются в реальном времени, помогая путешественникам находить активные предложения по Армении.", "ctaTitle": "Размещайте свои впечатления и активности на Experiences.am бесплатно.", "ctaText": "Для гидов, организаторов активностей и мероприятий, водителей, туристических компаний и локальных экспертов, которым нужна видимость и бронирования.", "ctaBtn": "Добавить впечатления", "footerNote": "Лучшие туры, активности и локальные впечатления в Армении", "masterClasses": "Мастер-классы", "paragliding": "Парапланеризм", "historianGuide": "Гид-историк", "horsebackHiking": "Конные походы", "skiMountaineering": "Ски-альпинизм", "mountaineerGuide": "Горный гид", "hikingGuide": "Пеший гид", "seater7": "Авто на 7 мест", "offroadVehicle": "Внедорожник", "seater17": "Микроавтобус на 17 мест", "photoVideo": "Фото и видео", "tourGuide": "Тур-гид", "brand": "Experiences<span>.am</span>", "navAdventures": "Приключения", "heroEyebrow": "Неизведанная территория", "heroTitleLine1": "Откройте Армению", "heroTitleLine2": "За пределами карты.", "heroText2": "От диких горных походов до скрытых винных погребов — бронируйте аутентичные впечатления напрямую у местных экспертов.", "heroBtnServices": "Добавить услуги", "heroTrust": "Проверенные местные гиды, события и впечатления по всей Армении", "listExperiencesBtn": "Разместить впечатления", "ourStandard": "Наш стандарт", "summaryFiltered": "Показаны отфильтрованные впечатления: "}, "ar": {"langButton": "اللغة ▾", "navCta": "أضف خدماتك", "navExplore": "التجارب", "navWhy": "لماذا تحجز معنا", "heroTitle": "اكتشف أرمينيا خارج حدود الخريطة", "heroText": "اعثر على أفضل الجولات والأنشطة والتجارب المحلية في أرمينيا. اكتشف رحلات المشي والأنشطة الثقافية وجولات النبيذ والمغامرات الخارجية وأفضل الأشياء التي يمكن القيام بها في أنحاء البلاد.", "heroBtn": "استكشف التجارب", "heroBtn2": "أدرج تجاربك", "sectionTitle": "التجارب المتاحة", "sectionLead": "استكشف المغامرات والأنشطة والتجارب المنشورة عبر Experiences.am.", "feedTitle": "خلاصة التجارب المباشرة", "allRegions": "كل المناطق", "allLanguages": "كل اللغات", "allExperiences": "كل التجارب", "lastMinute": "تقبل الحجوزات في اللحظة الأخيرة", "clearFilters": "مسح الفلاتر", "summaryAll": "عرض جميع التجارب المتاحة في أرمينيا.", "searchFilters": "البحث والفلاتر", "applyFilters": "تطبيق الفلاتر", "mobileFilterOpen": "ابحث وفلتر التجارب", "whyTitle": "لماذا تحجز معنا", "whyLead": "اعثر على أفضل الجولات والأنشطة والتجارب المحلية في أرمينيا، من المغامرات الجبلية والاكتشافات الثقافية إلى رحلات النبيذ وورش العمل والتجارب المحلية.", "f1t": "مباشرة من السكان المحليين", "f1d": "احجز مباشرة مع الأشخاص الذين يعرفون الأرض والقصص والمسار بشكل أفضل.", "f2t": "بدون عمولات إضافية", "f2d": "أنت تتواصل مباشرة مع المزوّد عبر منظومة سياحية أرمينية حديثة.", "f3t": "تجارب فريدة", "f3d": "من الرحلات الخفية وورش العمل إلى النبيذ والثقافة والفعاليات الإقليمية، اكتشف أكثر من الجولات التقليدية.", "f4t": "توفر فوري", "f4d": "تُعرض التجارب المنشورة مباشرة لمساعدة المسافرين على تصفح الفرص النشطة في أرمينيا.", "ctaTitle": "أدرج تجاربك وأنشطتك على Experiences.am مجانًا.", "ctaText": "مخصص للأدلاء ومقدمي الأنشطة ومنظمي الفعاليات والسائقين والأعمال السياحية والخبراء المحليين الذين يريدون الظهور والحجوزات.", "ctaBtn": "أضف تجاربك", "footerNote": "أفضل الجولات والأنشطة والتجارب المحلية في أرمينيا", "masterClasses": "ورش عمل", "paragliding": "الطيران الشراعي", "historianGuide": "دليل تاريخي", "horsebackHiking": "رحلات خيل", "skiMountaineering": "تسلق جبلي بالتزلج", "mountaineerGuide": "دليل جبلي", "hikingGuide": "دليل رحلات", "seater7": "مركبة 7 مقاعد", "offroadVehicle": "مركبة دفع رباعي", "seater17": "ميني باص 17 مقعدًا", "photoVideo": "تصوير وفيديو", "tourGuide": "مرشد سياحي", "brand": "Experiences<span>.am</span>", "navAdventures": "المغامرات", "heroEyebrow": "أرض غير مكتشفة", "heroTitleLine1": "اكتشف أرمينيا", "heroTitleLine2": "خارج حدود الخريطة.", "heroText2": "من رحلات الجبال البرية إلى أقبية النبيذ المخفية، احجز تجارب أصيلة مباشرة من الخبراء المحليين.", "heroBtnServices": "أضف خدماتك", "heroTrust": "أدلاء محليون موثوقون وفعاليات وتجارب عبر أرمينيا", "listExperiencesBtn": "أدرج تجاربك", "ourStandard": "معيارنا", "summaryFiltered": "عرض التجارب المفلترة: "}, "fa": {"langButton": "زبان ▾", "navCta": "خدمات خود را اضافه کنید", "navExplore": "تجربه‌ها", "navWhy": "چرا با ما رزرو کنید", "heroTitle": "ارمنستان را فراتر از نقشه کشف کنید", "heroText": "بهترین تورها، فعالیت‌ها و تجربه‌های محلی در ارمنستان را پیدا کنید. پیاده‌روی، فعالیت‌های فرهنگی، تورهای شراب، ماجراجویی‌های فضای باز و کارهایی که در سراسر کشور می‌توان انجام داد را کشف کنید.", "heroBtn": "کشف تجربه‌ها", "heroBtn2": "ثبت تجربه‌های شما", "sectionTitle": "تجربه‌های موجود", "sectionLead": "ماجراجویی‌ها، فعالیت‌ها و تجربه‌های منتشرشده در Experiences.am را بررسی کنید.", "feedTitle": "فید زنده تجربه‌ها", "allRegions": "همه مناطق", "allLanguages": "همه زبان‌ها", "allExperiences": "همه تجربه‌ها", "lastMinute": "پذیرش رزرو لحظه آخری", "clearFilters": "پاک کردن فیلترها", "summaryAll": "نمایش همه تجربه‌های موجود در ارمنستان.", "searchFilters": "جستجو و فیلترها", "applyFilters": "اعمال فیلترها", "mobileFilterOpen": "جستجو و فیلتر تجربه‌ها", "whyTitle": "چرا با ما رزرو کنید", "whyLead": "بهترین تورها، فعالیت‌ها و تجربه‌های محلی در ارمنستان را پیدا کنید؛ از ماجراجویی‌های کوهستانی و کشف‌های فرهنگی تا سفرهای شراب، ورکشاپ‌ها و تجربه‌های محلی.", "f1t": "مستقیم از محلی‌ها", "f1d": "مستقیماً با افرادی رزرو کنید که زمین، داستان‌ها و مسیر را بهتر می‌شناسند.", "f2t": "بدون کمیسیون اضافی", "f2d": "شما مستقیماً از طریق یک اکوسیستم مدرن گردشگری ارمنستان با ارائه‌دهنده در ارتباط هستید.", "f3t": "تجربه‌های منحصربه‌فرد", "f3d": "از هایک‌های پنهان و ورکشاپ‌ها تا شراب، فرهنگ و رویدادهای منطقه‌ای، چیزی فراتر از تورهای معمولی را کشف کنید.", "f4t": "دسترسی لحظه‌ای", "f4d": "تجربه‌های منتشرشده به‌صورت زنده نمایش داده می‌شوند تا مسافران فرصت‌های فعال در ارمنستان را ببینند.", "ctaTitle": "تجربه‌ها و فعالیت‌های خود را رایگان در Experiences.am ثبت کنید.", "ctaText": "برای راهنماها، ارائه‌دهندگان فعالیت، برگزارکنندگان رویداد، رانندگان، کسب‌وکارهای گردشگری و متخصصان محلی که به دیده‌شدن و رزرو نیاز دارند.", "ctaBtn": "افزودن تجربه‌ها", "footerNote": "بهترین تورها، فعالیت‌ها و تجربه‌های محلی در ارمنستان", "masterClasses": "مسترکلاس", "paragliding": "پاراگلایدینگ", "historianGuide": "راهنمای تاریخی", "horsebackHiking": "اسب‌سواری", "skiMountaineering": "اسکی کوهنوردی", "mountaineerGuide": "راهنمای کوهستان", "hikingGuide": "راهنمای هایکینگ", "seater7": "خودروی ۷ نفره", "offroadVehicle": "خودروی آفرود", "seater17": "مینی‌بوس ۱۷ نفره", "photoVideo": "عکاسی و ویدیو", "tourGuide": "راهنمای تور", "brand": "Experiences<span>.am</span>", "navAdventures": "ماجراجویی‌ها", "heroEyebrow": "سرزمین ناشناخته", "heroTitleLine1": "ارمنستان را تجربه کنید", "heroTitleLine2": "فراتر از نقشه.", "heroText2": "از کوه‌پیمایی‌های وحشیانه تا سرداب‌های پنهان شراب، تجربه‌های اصیل را مستقیماً از متخصصان محلی رزرو کنید.", "heroBtnServices": "خدمات خود را اضافه کنید", "heroTrust": "راهنماها، رویدادها و تجربه‌های محلی تاییدشده در سراسر ارمنستان", "listExperiencesBtn": "تجربه‌های خود را ثبت کنید", "ourStandard": "استاندارد ما", "summaryFiltered": "نمایش تجربه‌های فیلترشده: "}, "hy": {"langButton": "Լեզու ▾", "navCta": "Ավելացնել ծառայությունները", "navExplore": "Փորձառություններ", "navWhy": "Ինչու ամրագրել մեզ մոտ", "navAdventures": "Արկածներ", "heroEyebrow": "Չբացահայտված տարածք", "heroTitleLine1": "Բացահայտիր Հայաստանը", "heroTitleLine2": "Քարտեզից այն կողմ։", "heroText": "Գտեք Հայաստանի լավագույն տուրերը, ակտիվությունները և տեղական փորձառությունները։ Բացահայտեք արշավներ, մշակութային փորձառություններ, գինու տուրեր, բացօթյա արկածներ և ամբողջ երկրով մեկ անելու հիշարժան բաներ։", "heroText2": "Վայրի լեռնային արշավներից մինչև թաքնված գինու մառաններ՝ ամրագրեք իսկական փորձառություններ անմիջապես տեղական փորձագետներից։", "heroBtn": "Բացահայտել փորձառությունները", "heroBtn2": "Ավելացնել փորձառությունները", "heroBtnServices": "Ավելացնել ծառայությունները", "heroTrust": "Ստուգված տեղական գիդեր, միջոցառումներ և փորձառություններ ամբողջ Հայաստանում", "sectionTitle": "Հասանելի փորձառություններ", "sectionLead": "Բացահայտեք Experiences.am-ում հրապարակված ակտիվ արկածները, ակտիվությունները և փորձառությունները։", "feedTitle": "Փորձառությունների ուղիղ հոսք", "allRegions": "Բոլոր մարզերը", "allLanguages": "Բոլոր լեզուները", "allExperiences": "Բոլոր փորձառությունները", "lastMinute": "Ընդունում է վերջին րոպեի ամրագրումներ", "clearFilters": "Մաքրել ֆիլտրերը", "summaryAll": "Ցուցադրվում են Հայաստանի բոլոր հասանելի փորձառությունները։", "summaryFiltered": "Ցուցադրվում են ֆիլտրված փորձառությունները՝ ", "searchFilters": "Որոնում և ֆիլտրեր", "applyFilters": "Կիրառել ֆիլտրերը", "mobileFilterOpen": "Որոնել և ֆիլտրել փորձառությունները", "whyTitle": "Ինչու ամրագրել մեզ մոտ", "whyLead": "Գտեք Հայաստանի լավագույն տուրերը, ակտիվությունները և տեղական փորձառությունները՝ լեռնային արկածներից և մշակութային բացահայտումներից մինչև գինու ճամփորդություններ, վարպետաց դասեր և տեղական փորձառություններ։", "ourStandard": "Մեր չափանիշը", "f1t": "Անմիջապես տեղացիներից", "f1d": "Ամրագրեք անմիջապես այն մարդկանցից, որոնք ամենալավն են ճանաչում տարածքը, պատմությունները և երթուղիները։", "f2t": "Առանց հավելյալ միջնորդավճարների", "f2d": "Դուք անմիջապես կապվում եք ծառայություն մատուցողի հետ ժամանակակից հայկական տուրիզմի էկոհամակարգի միջոցով։", "f3t": "Յուրահատուկ փորձառություններ", "f3d": "Թաքնված արշավներից և վարպետաց դասերից մինչև գինի, մշակույթ և տարածաշրջանային միջոցառումներ՝ բացահայտեք ավելին, քան սովորական տուրերը։", "f4t": "Իրական ժամանակի հասանելիություն", "f4d": "Հրապարակված փորձառությունները ցուցադրվում են ուղիղ, օգնելով ճանապարհորդներին գտնել ակտիվ հնարավորություններ ամբողջ Հայաստանում։", "ctaTitle": "Ավելացրեք ձեր փորձառություններն ու ակտիվությունները Experiences.am-ում անվճար։", "ctaText": "Ստեղծված է գիդերի, ակտիվությունների մատակարարների, միջոցառումների կազմակերպիչների, վարորդների, տուրիզմի բիզնեսների և տեղական փորձագետների համար, ովքեր ուզում են տեսանելիություն և ամրագրումներ։", "ctaBtn": "Ավելացնել ձեր փորձառությունները", "footerNote": "Գտեք Հայաստանի լավագույն տուրերը, ակտիվությունները և տեղական փորձառությունները", "masterClasses": "Վարպետաց դասեր", "paragliding": "Պարապլաներիզմ", "historianGuide": "Պատմաբան գիդ", "horsebackHiking": "Ձիավարությամբ արշավ", "skiMountaineering": "Դահուկային լեռնագնացություն", "mountaineerGuide": "Լեռնագնաց գիդ", "hikingGuide": "Արշավային գիդ", "seater7": "7 տեղանոց մեքենա", "offroadVehicle": "Ամենագնաց", "seater17": "17 տեղանոց միկրոավտոբուս", "photoVideo": "Լուսանկար և վիդեո", "tourGuide": "Տուր գիդ", "brand": "Experiences<span>.am</span>", "listExperiencesBtn": "Ավելացնել փորձառությունները", "langOptionLabel": "Հայերեն"}};
+  var langWrap = document.getElementById('langWrap');
+  var langButton = document.getElementById('langButton');
+  var currentLang = localStorage.getItem('experiences_lang') || 'en';
+
+  function getTranslationValue(key) {
+    return (I18N[currentLang] && I18N[currentLang][key]) || (I18N.en && I18N.en[key]) || '';
+  }
+
+  function applyLanguage(lang) {
+    if (!I18N[lang]) lang = 'en';
+    currentLang = lang;
+    localStorage.setItem('experiences_lang', lang);
+
+    var rtl = (lang === 'ar' || lang === 'fa');
+    document.documentElement.lang = lang;
+    document.documentElement.dir = rtl ? 'rtl' : 'ltr';
+    document.body.style.direction = rtl ? 'rtl' : 'ltr';
+
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      if (!key) return;
+      var value = (I18N[lang] && I18N[lang][key]) || (I18N.en && I18N.en[key]);
+      if (typeof value === 'undefined') return;
+      if (key === 'brand') {
+        el.innerHTML = value;
+      } else {
+        el.innerHTML = value;
+      }
+    });
+
+    document.querySelectorAll('.lang-option').forEach(function(btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+
+    if (langButton) {
+      langButton.innerHTML = getTranslationValue('langButton');
+    }
+    var filterSummaryEl = document.getElementById('filterSummary');
+    if (filterSummaryEl && !filterSummaryEl.textContent.trim()) {
+      filterSummaryEl.textContent = getTranslationValue('summaryAll');
+    }
+  }
+
+  if (langButton) {
+    langButton.addEventListener('click', function(e) {
+      e.stopPropagation();
+      langWrap.classList.toggle('open');
+    });
+  }
+
+  document.addEventListener('click', function(e) {
+    if (langWrap && !langWrap.contains(e.target)) {
+      langWrap.classList.remove('open');
+    }
+  });
+
+  document.querySelectorAll('.lang-option').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      applyLanguage(this.getAttribute('data-lang'));
+      if (langWrap) langWrap.classList.remove('open');
+    });
+  });
+
+  applyLanguage(currentLang);
+
+  /*
+    ============================================================
+    TRANSLATIONS END
+    ============================================================
+  */
+</script>
+
+</body>
+</html>
