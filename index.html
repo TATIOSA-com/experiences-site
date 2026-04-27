@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XR85KZNLRX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XR85KZNLRX');
+</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Experiences.am | Tours, Activities and Local Experiences in Armenia</title>
   <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="hhttps://ota.am/wp-content/uploads/2025/03/Experiences.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://ota.am/wp-content/uploads/2025/03/Experiences.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://ota.am/wp-content/uploads/2025/03/Experiences.png">
   <link rel="apple-touch-icon" href="https://ota.am/wp-content/uploads/2025/03/Experiences.png">
   <meta name="description" content="Find the best tours, activities and local experiences in Armenia. Explore hikes, cultural discoveries, wine tours, outdoor adventures and unique things to do across Armenia on Experiences.am." />
@@ -789,7 +798,14 @@
               <button type="button" class="lang-option" data-lang="hy">Հայերեն</button>
             </div>
           </div>
-          <a href="https://my.ota.am" target="_blank" rel="noopener" class="nav-button glass" data-i18n="navCta">Add Your Services</a>
+          <a href="https://my.ota.am"
+   target="_blank"
+   rel="noopener"
+   class="nav-button glass"
+   data-i18n="navCta"
+   onclick="gtag('event', 'cta_click', { event_category: 'conversion', event_label: 'nav_add_service' });">
+Add Your Services
+</a>
         </div>
       </div>
     </nav>
@@ -803,7 +819,14 @@
           <p data-i18n="heroText2">From wild mountain hikes to hidden wine cellars, book authentic experiences directly from local experts.</p>
           <div class="hero-actions">
             <a href="#experiences" data-scroll="experiences" class="btn btn-primary" data-i18n="heroBtn">Explore Experiences</a>
-            <a href="https://my.ota.am" target="_blank" rel="noopener" class="btn btn-secondary glass" data-i18n="heroBtnServices">Add Your Services</a>
+            <a href="https://my.ota.am"
+   target="_blank"
+   rel="noopener"
+   class="btn btn-secondary glass"
+   data-i18n="heroBtnServices"
+   onclick="gtag('event', 'cta_click', { event_category: 'conversion', event_label: 'hero_add_service' });">
+Add Your Services
+</a>
           </div>
           <div class="hero-trust">
             <div class="stars">★★★★★</div>
@@ -823,7 +846,15 @@
             <div>
               <h3 data-i18n="feedTitle">Live Experiences Feed</h3>
             </div>
-            <a href="https://my.ota.am" target="_blank" rel="noopener" class="btn btn-secondary glass" style="padding:12px 16px; width:auto;" data-i18n="listExperiencesBtn">List Your Experiences</a>
+            <a href="https://my.ota.am"
+   target="_blank"
+   rel="noopener"
+   class="btn btn-secondary glass"
+   style="padding:12px 16px; width:auto;"
+   data-i18n="listExperiencesBtn"
+   onclick="gtag('event', 'cta_click', { event_category: 'conversion', event_label: 'list_experiences' });">
+List Your Experiences
+</a>
           </div>
 
           <div class="mobile-filter-bar">
@@ -957,7 +988,14 @@
             <p data-i18n="ctaText">Built for guides, activity providers, event organizers, drivers, tourism businesses and local experts who want visibility and bookings.</p>
           </div>
           <div>
-            <a href="https://my.ota.am" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="ctaBtn">Add Your Experiences</a>
+            <a href="https://my.ota.am"
+   target="_blank"
+   rel="noopener"
+   class="btn btn-primary"
+   data-i18n="ctaBtn"
+   onclick="gtag('event', 'cta_click', { event_category: 'conversion', event_label: 'bottom_add_experience' });">
+Add Your Experiences
+</a>
           </div>
         </div>
       </div>
@@ -1158,6 +1196,14 @@
     }
 
     function applyFilters() {
+      // TRACK FILTER USAGE
+  gtag('event', 'filter_used', {
+    event_category: 'engagement',
+    region: regionFilter ? regionFilter.value : '',
+    language: languageFilter ? languageFilter.value : '',
+    category: currentCategory || '',
+    same_day: sameDayFilter && sameDayFilter.checked ? 'yes' : 'no'
+  });
       experiencesFrame.src = buildFrameSrc();
       updateSummary();
     }
@@ -1205,6 +1251,11 @@
         var chip = e.target.closest('.category-chip');
         if (!chip) return;
         var category = chip.getAttribute('data-category') || '';
+        // TRACK
+  gtag('event', 'category_click', {
+    event_category: 'engagement',
+    event_label: category
+  });
         setActiveCategory(category);
       });
     }
